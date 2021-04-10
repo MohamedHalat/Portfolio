@@ -1,0 +1,9 @@
+{
+  "name": "vue-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "cd vue-site && npm run build",
+    "ci": ""
+  }
+}
