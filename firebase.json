@@ -6,7 +6,7 @@
     ]
   },
   "hosting": {
-    "public": "vue-site/dist",
+    "public": "./dist",
     "rewrites": [
       {
         "source": "**",
