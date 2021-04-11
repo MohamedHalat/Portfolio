@@ -44,12 +44,14 @@ export default {
 };
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
-body {
+html, body {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  margin: 0;
-  color: #313639;
+}
+
+#app {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
 }
 </style>
