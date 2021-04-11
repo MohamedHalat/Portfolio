@@ -1,30 +1,55 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <app-header :routes="routes"> </app-header>
+  <main>
+    <router-view />
+  </main>
 </template>
+<script>
+import AppHeader from "@/components/app-header/app-header.vue";
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+export default {
+  components: {
+    "app-header": AppHeader,
+  },
+  props: {
+    routes: {
+      type: Array,
+      required: false,
+      default: () => [
+        {
+          name: "Home",
+          route: "/",
+        },
+        {
+          name: "About",
+          route: "/about",
+        },
+        {
+          name: "Old Site",
+          link: "https://mohamedhalat.com",
+        },
+        {
+          name: "Github",
+          link: "https://github.com/MohamedHalat/Vue-Site",
+          newPage: true,
+        },
+        {
+          name: "LinkedIn",
+          link: "https://www.linkedin.com/in/halat",
+          newPage: true,
+        },
+      ],
+    },
+  },
+};
+</script>
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  margin: 0;
+  color: #313639;
 }
 </style>
