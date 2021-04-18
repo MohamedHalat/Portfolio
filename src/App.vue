@@ -1,8 +1,6 @@
 <template>
   <app-header :routes="routes"> </app-header>
-  <main>
-    <router-view />
-  </main>
+  <router-view />
 </template>
 <script>
 import AppHeader from "@/components/app-header/app-header.vue";
