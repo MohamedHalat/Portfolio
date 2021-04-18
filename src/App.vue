@@ -23,6 +23,10 @@ export default {
           route: "/about",
         },
         {
+          name: "Covid",
+          route: "/covid",
+        },
+        {
           name: "Old Site",
           link: "https://mohamedhalat.com",
         },
