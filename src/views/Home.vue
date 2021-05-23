@@ -1,5 +1,5 @@
 <template>
-  <div class="bg">
+  <div class="home">
     <div class="home-content">
       <h1 class="title">Welcome.</h1>
       <h2 class="subtitie">I'm Mohamed Halat</h2>
@@ -29,16 +29,27 @@ export default {
   name: "Home",
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
+.home {
+  background:linear-gradient(90deg, #4B6CB7 0%, #182848 100%);
+  height: 94%;
+  position: absolute;
+  width: 100%;
+}
+
 .home-content {
+  color: white;
   width: 60%;
-  height: 100%;
   margin: 20% auto;
-}
-.links {
-  display: flex;
-}
-a.link {
-  margin: 5px;
+
+  .links {
+    display: flex;
+    .link {
+      margin: 5px;
+      img {
+        filter: invert(135%) brightness(150%)
+      }
+    }
+  }
 }
 </style>
