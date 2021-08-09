@@ -4,7 +4,7 @@
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+          <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
             <span class="sr-only">Open main menu</span>
             <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
             <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
@@ -16,7 +16,16 @@
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
-              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+              <router-link
+                v-for="item in routes" :key="item.href"
+                :to="item.href"
+                custom
+                v-slot="{ href, route, navigate, isActive }"
+              >
+                <a :href="href" @click="navigate" :class="[isActive ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="isActive ? 'page' : undefined">
+                  {{ route.name }}
+                </a>
+              </router-link>
             </div>
           </div>
         </div>
@@ -25,7 +34,16 @@
 
     <DisclosurePanel class="sm:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+        <router-link
+          v-for="item in routes" :key="item.href"
+          :to="item.href"
+          custom
+          v-slot="{ href, route, navigate, isActive }"
+        >
+          <a :href="href" @click="navigate" :class="[isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="isActive ? 'page' : undefined">
+            {{ route.name }}
+          </a>
+        </router-link>
       </div>
     </DisclosurePanel>
   </Disclosure>
@@ -35,13 +53,6 @@
 <script>
 import { ref } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
 
 export default {
   components: {
@@ -54,14 +65,12 @@ export default {
       type: Array,
       required: true,
       validate: (value) =>
-        value.every((page) => (page.link || page.route) && page.name),
+        value.every((page) => page.href && page.name),
     },
   },
   setup() {
     const open = ref(false)
-
     return {
-      navigation,
       open,
     }
   },
