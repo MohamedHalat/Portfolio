@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <nav-bar :routes="routes"> </nav-bar>
-    <footer class="nav-footer"></footer>
+    <footer class="nav-footer bg-indigo-600"></footer>
   </header>
 </template>
 <script>
@@ -28,6 +28,5 @@ header.app-header {
 .nav-footer {
   height: 2px;
   width: 100%;
-  background-color: #fcb934;
 }
 </style>

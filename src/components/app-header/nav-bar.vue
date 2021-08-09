@@ -1,50 +1,54 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img
-        src="@/assets/logo.svg"
-        width="30"
-        height="30"
-        class="d-inline-block align-top"
-        alt=""
-      />
-      Mohamed Halat
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      @click="collapsed = !collapsed"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse" :class=" collapsed ? 'collapse' : '' " id="navbarNav">
-      <ul class="nav navbar-nav">
-        <li v-for="(page, index) in routes" :key="page.name" class="nav-item">
-          <a
-            class="nav-link"
-            v-if="page.link"
-            :href="page.link"
-            :target="page.newPage ? '_blank' : ''"
-            :class="index == 0 ? 'active' : ''"
-          >
-            {{ page.name }}
-          </a>
-          <router-link
-            v-else
-            :to="page.route"
-            class="nav-link"
-            :class="index == 0 ? 'active' : ''"
-          >
-            {{ page.name }}
-          </router-link>
-        </li>
-      </ul>
+  <Disclosure as="nav" class="antialiased text-gray-900 flex flex-col " v-slot="{ open }">
+    <div class="max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex items-center justify-between h-16">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <span class="sr-only">Open main menu</span>
+            <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+            <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
+          </DisclosureButton>
+        </div>
+        <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex-shrink-0 flex items-center">
+            <img class="lg:block h-8 w-auto fill-white text-green-600" src="@/assets/images/logo.svg" alt="MH" />
+          </div>
+          <div class="hidden sm:block sm:ml-6">
+            <div class="flex space-x-4">
+              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </nav>
+
+    <DisclosurePanel class="sm:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+      </div>
+    </DisclosurePanel>
+  </Disclosure>
+
 </template>
+
 <script>
+import { ref } from 'vue'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+
+const navigation = [
+  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Team', href: '#', current: false },
+  { name: 'Projects', href: '#', current: false },
+  { name: 'Calendar', href: '#', current: false },
+]
+
 export default {
+  components: {
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+  },
   props: {
     routes: {
       type: Array,
@@ -53,14 +57,13 @@ export default {
         value.every((page) => (page.link || page.route) && page.name),
     },
   },
-  data() {
+  setup() {
+    const open = ref(false)
+
     return {
-      collapsed: true,
+      navigation,
+      open,
     }
   },
-  methods: {
-  }
-};
+}
 </script>
-<style scoped>
-</style>
