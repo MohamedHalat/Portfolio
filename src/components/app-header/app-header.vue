@@ -1,7 +1,7 @@
 <template>
-  <header class="app-header">
+  <header class="t-0 w-screen bg-white">
     <nav-bar :routes="routes"> </nav-bar>
-    <footer class="nav-footer bg-indigo-600"></footer>
+    <footer class="h-1 w-screen bg-indigo-600"></footer>
   </header>
 </template>
 <script>
@@ -19,14 +19,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-header.app-header {
-  top: 0;
-  width: 100%;
-  background-color: white;
-}
-.nav-footer {
-  height: 2px;
-  width: 100%;
-}
-</style>

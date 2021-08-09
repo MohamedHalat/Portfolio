@@ -12,7 +12,7 @@
         </div>
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex-shrink-0 flex items-center">
-            <img class="lg:block h-8 w-auto fill-white text-green-600" src="@/assets/images/logo.svg" alt="MH" />
+            <img class="lg:block h-10 w-auto" src="@/assets/images/logo.svg" alt="MH" />
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
@@ -22,7 +22,7 @@
                 custom
                 v-slot="{ href, route, navigate, isActive }"
               >
-                <a :href="href" @click="navigate" :class="[isActive ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="isActive ? 'page' : undefined">
+                <a :href="href" @click="navigate" :class="[isActive ? 'bg-indigo-600 text-white' : 'text-indigo-600 hover:bg-indigo-900 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="isActive ? 'page' : undefined">
                   {{ route.name }}
                 </a>
               </router-link>
