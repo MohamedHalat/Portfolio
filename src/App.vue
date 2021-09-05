@@ -14,28 +14,8 @@ export default {
       type: Array,
       required: false,
       default: () => [
-        {
-          name: "Home",
-          route: "/",
-        },
-        {
-          name: "About",
-          route: "/about",
-        },
-        {
-          name: "Old Site",
-          link: "https://mohamedhalat.com",
-        },
-        {
-          name: "Github",
-          link: "https://github.com/MohamedHalat/Vue-Site",
-          newPage: true,
-        },
-        {
-          name: "LinkedIn",
-          link: "https://www.linkedin.com/in/halat",
-          newPage: true,
-        },
+        { name: 'Home', href: '/' },
+        { name: 'About', href: '/about'},
       ],
     },
   },
