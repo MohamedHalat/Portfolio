@@ -11,9 +11,6 @@
           </DisclosureButton>
         </div>
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-          <div class="flex-shrink-0 flex items-center">
-            <img class="lg:block h-10 w-auto" src="@/assets/images/logo.svg" alt="MH" />
-          </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
               <router-link
