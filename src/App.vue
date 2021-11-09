@@ -1,14 +1,9 @@
 <template>
-  <app-header :routes="routes"> </app-header>
   <router-view />
 </template>
 <script>
-import AppHeader from "@/components/app-header/app-header.vue";
 
 export default {
-  components: {
-    "app-header": AppHeader,
-  },
   props: {
     routes: {
       type: Array,
