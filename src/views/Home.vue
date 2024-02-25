@@ -15,7 +15,7 @@
             </p>
           </h1>
           <p class="mt-3 text-base sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 dark:text-gray-300">
-            Junior Full Stack Developer at Verto and student at the University of Toronto.
+            Full Stack Developer at Verto and University of Toronto Alumni
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <div class="rounded-md shadow">
@@ -25,7 +25,7 @@
             </div>
             <div class="mt-3 sm:mt-0 sm:ml-3">
               <a href="https://www.linkedin.com/in/halat/" target="_blank" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
-                Linked in
+                LinkedIn
               </a>
             </div>
           </div>
